@@ -8,17 +8,23 @@ namespace HelloWorld
 {
     class Program
     {
-        // constants as fields
-        const double PI = 3.1415926539;
-        const int weeks = 52, months = 12;
-        const string birthday = "September 29, 1997";
-        
+                
         static void Main(string[] args)
         {
-            Console.WriteLine("My birthday is always going to be: {0}", birthday);
+            string string1 = Console.ReadLine();
+            string string2 = Console.ReadLine();
+            double num1 = Double.Parse(string1);
+            double num2 = Double.Parse(string2);
+
+            Console.WriteLine(num1 + num2);
             Console.Read();
+
         }
 
+        public static string GreetFriend(string name)
+        {
+            return "Hi " + name + ", my friend!";
+        }
         
     }
 }
