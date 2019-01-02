@@ -11,20 +11,42 @@ namespace HelloWorld
                 
         static void Main(string[] args)
         {
-            string string1 = Console.ReadLine();
-            string string2 = Console.ReadLine();
-            double num1 = Double.Parse(string1);
-            double num2 = Double.Parse(string2);
+            Console.WriteLine("Please enter a number: ");
+            string userInput1 = Console.ReadLine();
+            Console.WriteLine("Please enter another number: ");
+            string userInput2 = Console.ReadLine();
 
-            Console.WriteLine(num1 + num2);
+            try
+            {
+                int userInputAsInt1 = int.Parse(userInput1);
+                int userInputAsInt2 = int.Parse(userInput2);
+                int div = userInputAsInt1 / userInputAsInt2;
+
+            }
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine("Cannot divide by zero!");
+            }
+            catch (ArgumentNullException)
+            {
+                Console.WriteLine("ArgumentNull exception");
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Format exception, please enter correct type");
+            }
+            catch (OverflowException)
+            {
+                Console.WriteLine("Overflow exception");
+            }
+            finally
+            {
+                Console.WriteLine("This is called regardless");
+            }
+
             Console.Read();
 
         }
 
-        public static string GreetFriend(string name)
-        {
-            return "Hi " + name + ", my friend!";
-        }
-        
     }
 }
