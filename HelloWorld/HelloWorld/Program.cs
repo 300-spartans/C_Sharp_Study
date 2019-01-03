@@ -8,33 +8,42 @@ namespace HelloWorld
 {
     class Program
     {
-                
+        static int highScore = 8900;
+        static string highscorePlayer = "300spartans";
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to our Login System \nEnter new username: ");
-            string username = Console.ReadLine();
-            Console.WriteLine("Enter new password: ");
-            string password = Console.ReadLine();
 
-            Login(username, password);
-            Console.Read();
-
-        }
-
-        public static void Login(string username, string password)
-        {
-            Console.WriteLine("Welcome {0}!", username);
-            Console.WriteLine("Please enter password: ");
-            string userInput = Console.ReadLine();
-
-            if(userInput.Equals(password))
+            Console.WriteLine("Current high score is {0}, held by {1}.", highScore, highscorePlayer);
+            Console.WriteLine("What is your gamertag? ");
+            string playerName = Console.ReadLine();
+            Console.WriteLine("What is your highscore? ");
+            string playerScoreInput = Console.ReadLine();
+            if (int.TryParse(playerScoreInput, out int playerScore))
             {
-                Console.WriteLine("You are logged in.");
+                Compare(playerName, playerScore);
             }
             else
             {
-                Console.WriteLine("Incorrect password. Closing program.");
+                Console.WriteLine("Invalid score value.");
             }
+            Console.Read();
+        }
+
+        public static void Compare(string playerName, int score)
+        {
+            if (score > highScore)
+            {
+                highScore = score;
+                highscorePlayer = playerName;
+                Console.WriteLine("New highscore is {0}, held by {1}.", highScore, highscorePlayer);
+
+            }
+            else
+            {
+                Console.WriteLine("The old score of {0} could not be broken and is still held by {1}.", highScore, highscorePlayer);
+            }
+
         }
     }
 }
