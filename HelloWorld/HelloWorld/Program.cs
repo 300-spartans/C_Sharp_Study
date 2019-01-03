@@ -11,42 +11,30 @@ namespace HelloWorld
                 
         static void Main(string[] args)
         {
-            Console.WriteLine("Please enter a number: ");
-            string userInput1 = Console.ReadLine();
-            Console.WriteLine("Please enter another number: ");
-            string userInput2 = Console.ReadLine();
+            Console.WriteLine("Welcome to our Login System \nEnter new username: ");
+            string username = Console.ReadLine();
+            Console.WriteLine("Enter new password: ");
+            string password = Console.ReadLine();
 
-            try
-            {
-                int userInputAsInt1 = int.Parse(userInput1);
-                int userInputAsInt2 = int.Parse(userInput2);
-                int div = userInputAsInt1 / userInputAsInt2;
-
-            }
-            catch (DivideByZeroException)
-            {
-                Console.WriteLine("Cannot divide by zero!");
-            }
-            catch (ArgumentNullException)
-            {
-                Console.WriteLine("ArgumentNull exception");
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Format exception, please enter correct type");
-            }
-            catch (OverflowException)
-            {
-                Console.WriteLine("Overflow exception");
-            }
-            finally
-            {
-                Console.WriteLine("This is called regardless");
-            }
-
+            Login(username, password);
             Console.Read();
 
         }
 
+        public static void Login(string username, string password)
+        {
+            Console.WriteLine("Welcome {0}!", username);
+            Console.WriteLine("Please enter password: ");
+            string userInput = Console.ReadLine();
+
+            if(userInput.Equals(password))
+            {
+                Console.WriteLine("You are logged in.");
+            }
+            else
+            {
+                Console.WriteLine("Incorrect password. Closing program.");
+            }
+        }
     }
 }
