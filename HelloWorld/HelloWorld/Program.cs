@@ -13,37 +13,26 @@ namespace HelloWorld
 
         static void Main(string[] args)
         {
+            int lengthOfText = 0;
 
-            Console.WriteLine("Current high score is {0}, held by {1}.", highScore, highscorePlayer);
-            Console.WriteLine("What is your gamertag? ");
-            string playerName = Console.ReadLine();
-            Console.WriteLine("What is your highscore? ");
-            string playerScoreInput = Console.ReadLine();
-            if (int.TryParse(playerScoreInput, out int playerScore))
+            for (int counter = 1; counter <= 20; counter+=2)
             {
-                Compare(playerName, playerScore);
+                Console.WriteLine(counter);
+                Console.WriteLine("Counter incremented");
             }
-            else
+
+            do
             {
-                Console.WriteLine("Invalid score value.");
-            }
+                Console.WriteLine("Please enter the name of a friend:");
+                string name = Console.ReadLine();
+                int currentLength = name.Length;
+                lengthOfText += currentLength;
+            } while (lengthOfText < 20);
+
             Console.Read();
+            
         }
 
-        public static void Compare(string playerName, int score)
-        {
-            if (score > highScore)
-            {
-                highScore = score;
-                highscorePlayer = playerName;
-                Console.WriteLine("New highscore is {0}, held by {1}.", highScore, highscorePlayer);
-
-            }
-            else
-            {
-                Console.WriteLine("The old score of {0} could not be broken and is still held by {1}.", highScore, highscorePlayer);
-            }
-
-        }
+        
     }
 }
